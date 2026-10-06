@@ -1,0 +1,828 @@
+Build a **fully functional, modern, responsive web application called “SmartAgri Map”**.
+
+## PROJECT IDEA
+
+SmartAgri Map is a map-based Smart Agriculture platform where farmers can report agricultural problems such as:
+
+* 🌱 Crop Disease
+* 🐛 Pest Attack
+* 💧 Water Shortage
+* 🌍 Soil Problems
+* 🌾 Crop Damage
+
+Farmers can report problems with their location and image. Agriculture officers can view the reports on an interactive map, update their status, and resolve problems.
+
+The main flow is:
+
+**Report Problem → Get Location → Display on Map → Officer Reviews → Update Status → Resolve Problem**
+
+---
+
+# 1. TECHNOLOGY
+
+Use:
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* Lucide React icons
+* Leaflet
+* React-Leaflet
+* OpenStreetMap
+* Recharts
+
+For the prototype, use **localStorage for data persistence** so the application works immediately without requiring external database credentials.
+
+Structure the code so PostgreSQL/Prisma can be added later.
+
+Do not use paid APIs.
+
+---
+
+# 2. WEBSITE DESIGN
+
+Create a professional agriculture-themed interface.
+
+### Colors
+
+Use:
+
+* Primary: Green
+* Secondary: Light Green
+* Background: White / Very Light Green
+* Dark text
+* Red, Orange, Blue, Purple status/category indicators
+
+Use:
+
+* Rounded cards
+* Soft shadows
+* Modern buttons
+* Clear icons
+* Good spacing
+* Responsive layout
+* Mobile-friendly design
+
+The website should look like a real startup/product, not a basic college HTML page.
+
+---
+
+# 3. NAVIGATION
+
+Create a responsive navbar.
+
+Logo:
+
+**🌱 SmartAgri Map**
+
+Navigation:
+
+```text
+Home
+Agriculture Map
+Report Problem
+Dashboard
+About
+Login
+```
+
+On mobile, use a hamburger menu.
+
+---
+
+# 4. HOME PAGE
+
+Create a visually attractive landing page.
+
+### Hero Section
+
+Heading:
+
+**“Smart Mapping for Smarter Farming”**
+
+Description:
+
+“Report agricultural problems, locate them on a live map, and connect farmers with agricultural support teams.”
+
+Buttons:
+
+**View Agriculture Map**
+
+**Report a Problem**
+
+Add an agriculture-themed visual section showing:
+
+* Farm
+* Crops
+* Map/location pins
+* Technology
+
+### Statistics
+
+Display:
+
+```text
+500+ Reports
+320+ Farmers
+150+ Resolved
+25+ Active Areas
+```
+
+Use attractive statistic cards.
+
+### How It Works
+
+Show 4 steps:
+
+```text
+1. Report Problem
+       ↓
+2. Share Location
+       ↓
+3. Officer Reviews
+       ↓
+4. Problem Resolved
+```
+
+### Problem Categories
+
+Create cards for:
+
+🌱 Crop Disease
+🐛 Pest Attack
+💧 Water Shortage
+🌍 Soil Problem
+🌾 Crop Damage
+
+---
+
+# 5. AGRICULTURE MAP PAGE
+
+Create a **real interactive Leaflet map** using OpenStreetMap.
+
+Do NOT create a fake map image.
+
+Show agricultural problem markers.
+
+Marker colors:
+
+```text
+Crop Disease   → Red
+Pest Attack    → Orange
+Water Shortage → Blue
+Soil Problem   → Green
+Crop Damage    → Purple
+```
+
+### Marker Popup
+
+When a marker is clicked, show:
+
+* Problem type
+* Location
+* Description
+* Date
+* Status
+* Report ID
+* View Details button
+
+### Map Controls
+
+Add:
+
+* Search location
+* Problem type filter
+* Status filter
+* Use My Location
+* Reset filters
+
+### GPS
+
+When the user clicks:
+
+**📍 Use My Location**
+
+use:
+
+```text
+navigator.geolocation
+```
+
+Get the user's latitude and longitude and center the map on that location.
+
+Handle permission denial gracefully.
+
+---
+
+# 6. SAMPLE MAP DATA
+
+Initially populate the map with sample reports.
+
+Use locations such as:
+
+```text
+Rajampet
+Kadapa
+Anantapur
+Kurnool
+Tirupati
+Hyderabad
+```
+
+Example:
+
+```text
+Crop Disease → Rajampet
+Pest Attack → Kadapa
+Water Shortage → Anantapur
+Soil Problem → Kurnool
+Crop Damage → Tirupati
+Water Shortage → Hyderabad
+```
+
+Use realistic latitude and longitude values.
+
+---
+
+# 7. REPORT PROBLEM PAGE
+
+Create a simple farmer-friendly form.
+
+Fields:
+
+```text
+Farmer Name
+Problem Type
+Location
+Description
+Date
+Image
+Latitude
+Longitude
+```
+
+Problem Type dropdown:
+
+```text
+Crop Disease
+Pest Attack
+Water Shortage
+Soil Problem
+Crop Damage
+```
+
+Add:
+
+**📍 Use My Location**
+
+When clicked:
+
+* Get GPS location
+* Display coordinates
+* Center map
+* Allow the user to confirm the location
+
+### Image Upload
+
+Allow:
+
+```text
+JPG
+JPEG
+PNG
+WEBP
+```
+
+Maximum size:
+
+**5 MB**
+
+Show image preview.
+
+### Submit
+
+Button:
+
+**Submit Problem Report**
+
+After successful submission:
+
+Show:
+
+**✅ Problem reported successfully!**
+
+Then:
+
+* Save the report
+* Add it to the map
+* Update dashboard statistics
+* Reset the form
+
+---
+
+# 8. DASHBOARD
+
+Create a professional dashboard.
+
+### Statistics Cards
+
+Show:
+
+```text
+Total Reports
+Reported
+In Progress
+Resolved
+```
+
+These must update dynamically.
+
+### Charts
+
+Use Recharts.
+
+Create:
+
+1. Problems by category
+2. Problems by status
+
+### Recent Reports
+
+Create a table:
+
+```text
+ID
+Problem
+Location
+Date
+Status
+Action
+```
+
+Add:
+
+**View Details**
+
+---
+
+# 9. REPORT DETAILS
+
+Create a modal or separate page for report details.
+
+Display:
+
+* Report ID
+* Problem type
+* Farmer name
+* Location
+* Description
+* Image
+* Date
+* Latitude
+* Longitude
+* Status
+* Remarks
+
+Display a small map showing the exact report location.
+
+---
+
+# 10. USER ROLES
+
+Create three demo roles.
+
+### FARMER
+
+Can:
+
+* Report problems
+* View public map
+* View own reports
+* Track report status
+
+### OFFICER
+
+Can:
+
+* View all reports
+* View map
+* View report details
+* Add remarks
+* Change report status
+
+### ADMIN
+
+Can:
+
+* View all reports
+* View analytics
+* Manage reports
+* Manage users
+* Delete invalid reports
+
+---
+
+# 11. DEMO LOGIN
+
+Create a functional login page.
+
+Demo accounts:
+
+```text
+FARMER
+
+Email:
+farmer@demo.com
+
+Password:
+farmer123
+```
+
+```text
+OFFICER
+
+Email:
+officer@demo.com
+
+Password:
+officer123
+```
+
+```text
+ADMIN
+
+Email:
+admin@demo.com
+
+Password:
+admin123
+```
+
+After login:
+
+```text
+Farmer → Farmer Dashboard
+Officer → Officer Dashboard
+Admin → Admin Dashboard
+```
+
+For this prototype, simple demo authentication using localStorage is acceptable.
+
+Clearly label these as **Demo Accounts**.
+
+---
+
+# 12. OFFICER DASHBOARD
+
+Create an officer-specific dashboard.
+
+Show:
+
+* Total reports
+* Active reports
+* Resolved reports
+* Reports near the officer
+
+Create a report list.
+
+For each report provide:
+
+**View**
+
+**Update Status**
+
+**Add Remarks**
+
+Status workflow:
+
+```text
+REPORTED
+     ↓
+IN PROGRESS
+     ↓
+RESOLVED
+```
+
+Use attractive status badges.
+
+---
+
+# 13. ADMIN DASHBOARD
+
+Create an admin dashboard.
+
+Show:
+
+* Total farmers
+* Total officers
+* Total reports
+* Resolved reports
+* Active reports
+
+Add:
+
+* User management table
+* Report management table
+* Delete invalid report option
+* Analytics
+
+---
+
+# 14. SEARCH AND FILTER
+
+Make filters functional.
+
+Users should be able to filter by:
+
+```text
+Problem Type
+Status
+Location
+Date
+```
+
+Search should work for locations and problem descriptions.
+
+Allow multiple filters at the same time.
+
+---
+
+# 15. DATA STORAGE
+
+For this first working prototype, use **localStorage**.
+
+Create a report object:
+
+```text
+{
+  id,
+  farmerName,
+  problemType,
+  description,
+  locationName,
+  latitude,
+  longitude,
+  image,
+  date,
+  status,
+  remarks,
+  createdAt
+}
+```
+
+Data must remain after page refresh.
+
+When a new report is created:
+
+* Save it to localStorage
+* Display it on the map
+* Update dashboard
+* Make it visible to officers/admins
+
+Create a small seed-data system so sample reports are automatically available on first launch.
+
+---
+
+# 16. VALIDATION
+
+Validate all forms.
+
+### Farmer Name
+
+* Required
+* Minimum 2 characters
+
+### Description
+
+* Required
+* Minimum 10 characters
+* Maximum 1000 characters
+
+### Problem Type
+
+Only accept valid categories.
+
+### Coordinates
+
+Latitude:
+
+```text
+-90 to 90
+```
+
+Longitude:
+
+```text
+-180 to 180
+```
+
+### Image
+
+* Maximum 5 MB
+* JPG/JPEG/PNG/WEBP only
+
+Show clear error messages beside invalid fields.
+
+---
+
+# 17. SECURITY
+
+Even though this is a prototype:
+
+* Do not expose passwords unnecessarily.
+* Do not use `eval()`.
+* Sanitize user-generated content before displaying it.
+* Validate user input.
+* Do not trust role values blindly.
+* Prevent users from accessing unauthorized dashboard actions.
+* Do not place API keys in frontend code.
+* Keep future secrets in environment variables.
+
+---
+
+# 18. RESPONSIVE DESIGN
+
+The website must work properly on:
+
+* Mobile
+* Tablet
+* Laptop
+* Desktop
+
+On mobile:
+
+* Collapsible navbar
+* Full-width cards
+* Touch-friendly buttons
+* Responsive map
+* Easy-to-use report form
+* Horizontally scrollable tables where necessary
+
+---
+
+# 19. COMPONENT STRUCTURE
+
+Create reusable components:
+
+```text
+Navbar
+Footer
+HeroSection
+StatCard
+ProblemCard
+ProblemForm
+MapView
+MapMarker
+FilterBar
+DashboardCard
+ReportTable
+ReportDetails
+StatusBadge
+LoginForm
+ProtectedRoute
+```
+
+Do not duplicate large blocks of code.
+
+---
+
+# 20. USER EXPERIENCE
+
+Make the interface extremely easy to understand.
+
+Use clear labels such as:
+
+**Report a Problem**
+
+instead of complicated technical terms.
+
+Use confirmation messages:
+
+**“Your report has been submitted successfully.”**
+
+Use loading indicators when required.
+
+Use empty states such as:
+
+**“No agricultural problems found in this area.”**
+
+---
+
+# 21. ABOUT PAGE
+
+Create an About page explaining:
+
+### What is SmartAgri Map?
+
+A platform that uses mapping technology to connect farmers and agricultural authorities.
+
+### Our Goal
+
+“To help identify agricultural problems faster and improve farming support through location-based technology.”
+
+Show the three user roles:
+
+* Farmer
+* Agriculture Officer
+* Admin
+
+---
+
+# 22. FINAL WORKING FLOW
+
+The following complete flow MUST work:
+
+```text
+Open Website
+      ↓
+Home Page
+      ↓
+Farmer Login
+      ↓
+Report Problem
+      ↓
+Enter Problem Details
+      ↓
+Use GPS Location
+      ↓
+Upload Image
+      ↓
+Submit
+      ↓
+Save Report
+      ↓
+Show Success Message
+      ↓
+Report Appears on Map
+      ↓
+Dashboard Statistics Update
+      ↓
+Officer Login
+      ↓
+Officer Views Report
+      ↓
+Officer Changes Status
+      ↓
+REPORTED
+      ↓
+IN PROGRESS
+      ↓
+RESOLVED
+      ↓
+Farmer Can See Updated Status
+```
+
+---
+
+# 23. IMPORTANT IMPLEMENTATION RULE
+
+Do NOT build only a visual mockup.
+
+The following must actually work:
+
+* Navigation
+* Login
+* Role selection
+* Report form
+* Image upload
+* GPS location
+* Map markers
+* Map filters
+* Search
+* LocalStorage persistence
+* Dashboard statistics
+* Charts
+* Status updates
+* Report details
+* Responsive layout
+
+Do not create fake buttons that do nothing.
+
+---
+
+# 24. FINAL TESTING
+
+Before finishing:
+
+1. Run the application.
+2. Test all navigation links.
+3. Test Farmer login.
+4. Submit a new report.
+5. Test GPS.
+6. Test image upload.
+7. Check that the report appears on the map.
+8. Refresh the browser and verify the report remains.
+9. Login as Officer.
+10. Change report status.
+11. Login as Farmer again.
+12. Verify the updated status.
+13. Test Admin dashboard.
+14. Test all filters.
+15. Test mobile responsiveness.
+16. Fix all console errors.
+
+Make sure the application starts successfully with the **Replit Run button**.
+
+The final result should be a polished, working **Smart Agriculture Map prototype** suitable for a college project, hackathon demonstration, and presentation.

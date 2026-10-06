@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SmartAgri Map"
+description = "A responsive agriculture support platform where farmers report crop and field problems on an interactive map, and officers and administrators review, track, and resolve them."
+version = "1.0.0"
+id = "artifacts/smartagri-map"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23375
+
+[services.development]
+run = "pnpm --filter @workspace/smartagri-map run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/smartagri-map", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/smartagri-map/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23375"
+BASE_PATH = "/"
